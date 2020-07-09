@@ -6,6 +6,7 @@ Frame::Frame(Vector2f position, float squareSize, float frameSize) {
 	this->setSquareSize(squareSize);
 	this->setFrameSize(frameSize);
 	this->setPosition(position);
+	this->setColor(Color::White);
 }
 
 void Frame::setPosition(Vector2f position) {
@@ -46,6 +47,18 @@ void Frame::setFrameSize(float frameSize) {
 
 float Frame::getFrameSize() {
 	return this->frameSize;
+}
+
+void Frame::setColor(Color color) {
+	this->color = color;
+	this->topShape.setFillColor(this->color);
+	this->bottomShape.setFillColor(this->color);
+	this->leftShape.setFillColor(this->color);
+	this->rightShape.setFillColor(this->color);
+}
+
+Color Frame::getColor() {
+	return this->color;
 }
 
 void Frame::draw(RenderTarget &target, RenderStates state) const {

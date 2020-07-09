@@ -11,6 +11,8 @@ public:
 	float getSquareSize();
 	void setFrameSize(float frameSize);
 	float getFrameSize();
+	void setColor(sf::Color color);
+	sf::Color getColor();
 
 private:
 	void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
@@ -21,4 +23,5 @@ private:
 	sf::RectangleShape bottomShape;
 	sf::RectangleShape leftShape;
 	sf::RectangleShape rightShape;
+	sf::Color color;
 };
