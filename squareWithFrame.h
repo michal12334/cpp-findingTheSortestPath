@@ -5,6 +5,7 @@
 
 class SquareWithFrame :public sf::Drawable {
 public:
+	SquareWithFrame();
 	SquareWithFrame(sf::Vector2f position, float squareSize, float frameSize);
 	void setPosition(sf::Vector2f position);
 	sf::Vector2f getPosition();

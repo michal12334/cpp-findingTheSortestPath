@@ -2,6 +2,8 @@
 
 using namespace sf;
 
+SquareWithFrame::SquareWithFrame() :SquareWithFrame(Vector2f{0, 0}, 0, 0) {}
+
 SquareWithFrame::SquareWithFrame(Vector2f position, float squareSize, float frameSize) 
 :frame(position, squareSize, frameSize) {
 	this->setSquareSize(squareSize);
