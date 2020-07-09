@@ -2,7 +2,10 @@
 
 using namespace sf;
 
-Frame::Frame() {
+Frame::Frame(Vector2f position, float squareSize, float frameSize) {
+	this->setSquareSize(squareSize);
+	this->setFrameSize(frameSize);
+	this->setPosition(position);
 }
 
 void Frame::setPosition(Vector2f position) {
