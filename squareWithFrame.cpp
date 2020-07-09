@@ -60,6 +60,31 @@ float SquareWithFrame::getFrameSize() {
 	return this->frameSize;
 }
 
+float SquareWithFrame::top() {
+	return this->getPosition().y;
+}
+
+float SquareWithFrame::bottom() {
+	return this->getPosition().y + this->getSquareSize();
+}
+
+float SquareWithFrame::left() {
+	return this->getPosition().x;
+}
+
+float SquareWithFrame::right() {
+	return this->getPosition().x + this->getSquareSize();
+}
+
+bool SquareWithFrame::isMouseInside(RenderWindow *window) {
+	sf::Vector2i mousePosition = Mouse::getPosition(*window);
+
+	return mousePosition.x >= this->left() 
+		&& mousePosition.x <= this->right()
+		&& mousePosition.y >= this->top()
+		&& mousePosition.y <= this->bottom();
+}
+
 void SquareWithFrame::draw(RenderTarget &target, RenderStates state) const {
 	target.draw(this->shape, state);
 	target.draw(this->frame, state);

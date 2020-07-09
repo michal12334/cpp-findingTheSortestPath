@@ -18,6 +18,12 @@ public:
 	void setFrameSize(float size);
 	float getFrameSize();
 
+	float top();
+	float bottom();
+	float left();
+	float right();
+	bool isMouseInside(sf::RenderWindow *window);
+
 private:
 	void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
 	Frame frame;
