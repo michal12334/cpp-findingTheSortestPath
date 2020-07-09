@@ -28,6 +28,26 @@ void Plane::setEndSquare(pair<int, int> endSquare) {
 	this->endSquare = endSquare;
 }
 
+void Plane::drawOnPlane(RenderWindow *window) {
+	if(!this->isDrawing)
+		return;
+
+	if(Mouse::isButtonPressed(Mouse::Button::Left)) {
+		for(int i = 0; i < this->squaresNumber; i++) {
+			for(int j = 0; j < this->squaresNumber; j++) {
+				if(make_pair(i, j) != startSquare && make_pair(i, j) != endSquare) {
+					if(squares[i][j].isMouseInside(window)) {
+						squares[i][j].setSquareColor(Color::Yellow);
+					}
+				}
+			}
+		}
+	}
+
+	if(Keyboard::isKeyPressed(Keyboard::Key::Space))
+		this->isDrawing = false;
+}
+
 void Plane::draw(RenderTarget &target, RenderStates state) const {
 	for(int i = 0; i < this->squaresNumber; i++) {
 		for(int j = 0; j < this->squaresNumber; j++) {

@@ -8,6 +8,7 @@ public:
 	Plane(int squaresNumber, float squareSize, float frameSize);
 	void setStartSquare(std::pair<int, int> startSquare);
 	void setEndSquare(std::pair<int, int> endSquare);
+	void drawOnPlane(sf::RenderWindow *window);
 
 private:
 	void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
@@ -17,4 +18,5 @@ private:
 	float frameSize;
 	std::pair<int, int> startSquare;
 	std::pair<int, int> endSquare;
+	bool isDrawing;
 };
