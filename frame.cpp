@@ -33,6 +33,14 @@ float Frame::getSquareSize() {
 	return this->squareSize;
 }
 
+void Frame::setFrameSize(float frameSize) {
+	this->frameSize = frameSize;
+}
+
+float Frame::getFrameSize() {
+	return this->frameSize;
+}
+
 void Frame::draw(RenderTarget &target, RenderStates state) const {
 	target.draw(this->topShape, state);
 	target.draw(this->bottomShape, state);
