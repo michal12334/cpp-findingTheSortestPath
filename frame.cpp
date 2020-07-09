@@ -38,6 +38,10 @@ float Frame::getSquareSize() {
 
 void Frame::setFrameSize(float frameSize) {
 	this->frameSize = frameSize;
+	this->topShape.setSize(Vector2f{this->squareSize, this->frameSize});
+	this->bottomShape.setSize(Vector2f{this->squareSize, this->frameSize});
+	this->leftShape.setSize(Vector2f{this->frameSize, this->squareSize});
+	this->rightShape.setSize(Vector2f{this->frameSize, this->squareSize});
 }
 
 float Frame::getFrameSize() {
