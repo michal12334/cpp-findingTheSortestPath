@@ -2,7 +2,13 @@
 
 using namespace sf;
 
-SquareWithFrame::SquareWithFrame() {
+SquareWithFrame::SquareWithFrame(Vector2f position, float squareSize, float frameSize) 
+:frame(position, squareSize, frameSize) {
+	this->setSquareSize(squareSize);
+	this->setFrameSize(frameSize);
+	this->setPosition(position);
+	this->setSquareColor(Color::Black);
+	this->setFrameColor(Color::White);
 }
 
 void SquareWithFrame::setPosition(Vector2f position) {
