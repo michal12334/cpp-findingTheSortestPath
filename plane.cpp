@@ -18,3 +18,11 @@ Plane::Plane(int squaresNumber, float squareSize, float frameSize) {
 		}
 	}
 }
+
+void Plane::draw(RenderTarget &target, RenderStates state) const {
+	for(int i = 0; i < this->squaresNumber; i++) {
+		for(int j = 0; j < this->squaresNumber; j++) {
+			target.draw(this->squares[i][j], state);
+		}
+	}
+}
