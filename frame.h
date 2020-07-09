@@ -7,6 +7,8 @@ public:
 	Frame();
 	void setPosition(sf::Vector2f position);
 	sf::Vector2f getPosition();
+	void setSquareSize(float squareSize);
+	float getSquareSize();
 
 private:
 	void draw(sf::RenderTarget &target, sf::RenderStates state) const override;

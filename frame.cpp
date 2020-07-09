@@ -25,6 +25,14 @@ Vector2f Frame::getPosition() {
 	return this->position;
 }
 
+void Frame::setSquareSize(float squareSize) {
+	this->squareSize = squareSize;
+}
+
+float Frame::getSquareSize() {
+	return this->squareSize;
+}
+
 void Frame::draw(RenderTarget &target, RenderStates state) const {
 	target.draw(this->topShape, state);
 	target.draw(this->bottomShape, state);
