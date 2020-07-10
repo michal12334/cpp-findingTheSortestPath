@@ -7,6 +7,7 @@ Plane::Plane(int squaresNumber, float squareSize, float frameSize) {
 	this->squaresNumber = squaresNumber;
 	this->squareSize = squareSize;
 	this->frameSize = frameSize;
+	this->isDrawing = true;
 
 	squares = new SquareWithFrame * [squaresNumber];
 	for(int i = 0; i < squaresNumber; i++) {
