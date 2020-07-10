@@ -1,4 +1,5 @@
 #include "plane.h"
+#include <queue>
 
 using namespace sf;
 using namespace std;
@@ -10,13 +11,16 @@ Plane::Plane(int squaresNumber, float squareSize, float frameSize) {
 	this->isDrawing = true;
 
 	squares = new SquareWithFrame * [squaresNumber];
+	distance = new int * [squaresNumber];
 	for(int i = 0; i < squaresNumber; i++) {
 		squares[i] = new SquareWithFrame [squaresNumber];
+		distance[i] = new int [squaresNumber];
 
 		for(int j = 0; j < squaresNumber; j++) {
 			squares[i][j].setSquareSize(squareSize);
 			squares[i][j].setFrameSize(frameSize);
 			squares[i][j].setPosition(Vector2f{i * squareSize, j * squareSize});
+			distance[i][j] = -1;
 		}
 	}
 }
@@ -57,4 +61,8 @@ void Plane::draw(RenderTarget &target, RenderStates state) const {
 			target.draw(this->squares[i][j], state);
 		}
 	}
+}
+
+void Plane::dfs() {
+	
 }

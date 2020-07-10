@@ -19,4 +19,7 @@ private:
 	std::pair<int, int> startSquare;
 	std::pair<int, int> endSquare;
 	bool isDrawing;
+
+	void dfs();
+	int **distance;
 };
