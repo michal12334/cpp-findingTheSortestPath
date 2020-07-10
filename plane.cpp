@@ -112,7 +112,7 @@ void Plane::bfs() {
 void Plane::bfsHelp() {
 	if(this->distance[temp.first][temp.second] == -1
 	  && this->squares[temp.first][temp.second].getSquareColor() != Color::Yellow) {
-		this->distance[temp.first][temp.second] = this->distance[point.first][point.second];
+		this->distance[temp.first][temp.second] = this->distance[point.first][point.second] + 1;
 
 		if(temp == this->endSquare) {
 			this->isDfsAvaliable = false;
