@@ -76,6 +76,8 @@ void Plane::bfs() {
 
 	point = q.front();
 	q.pop();
+	if(point != this->startSquare)
+		this->squares[point.first][point.second].setSquareColor(Color::Red);
 
 	if(point.first != 0) {
 		temp = make_pair(point.first - 1, point.second);
@@ -120,7 +122,7 @@ void Plane::bfsHelp() {
 		}
 
 		q.push(temp);
-		this->squares[temp.first][temp.second].setSquareColor(Color::Red);
+		this->squares[temp.first][temp.second].setSquareColor(Color::Green);
 	}
 }
 
