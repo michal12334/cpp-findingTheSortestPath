@@ -23,10 +23,12 @@ Plane::Plane(int squaresNumber, float squareSize, float frameSize) {
 
 void Plane::setStartSquare(pair<int, int> startSquare) {
 	this->startSquare = startSquare;
+	squares[startSquare.first][startSquare.second].setSquareColor(Color::White);
 }
 
 void Plane::setEndSquare(pair<int, int> endSquare) {
 	this->endSquare = endSquare;
+	squares[endSquare.first][endSquare.second].setSquareColor(Color::White);
 }
 
 void Plane::drawOnPlane(RenderWindow *window) {
