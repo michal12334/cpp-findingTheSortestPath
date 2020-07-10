@@ -11,6 +11,7 @@ public:
 	void setEndSquare(std::pair<int, int> endSquare);
 	void drawOnPlane(sf::RenderWindow *window);
 	void bfs();
+	void findTheSortestPath();
 
 private:
 	void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
@@ -28,4 +29,6 @@ private:
 	std::queue< std::pair<int, int> > q;
 	std::pair<int, int> point;
 	std::pair<int, int> temp;
+
+	bool isFindingTheSortestPathAvaliable;
 };
