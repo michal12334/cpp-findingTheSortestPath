@@ -117,7 +117,7 @@ void Plane::dfsHelp() {
 
 		if(temp == this->endSquare) {
 			this->isDfsAvaliable = false;
-
+			return;
 		}
 
 		q.push(temp);
