@@ -9,6 +9,7 @@ Plane::Plane(int squaresNumber, float squareSize, float frameSize) {
 	this->squareSize = squareSize;
 	this->frameSize = frameSize;
 	this->isDrawing = true;
+	this->isDfsAvaliable = true;
 
 	squares = new SquareWithFrame * [squaresNumber];
 	distance = new int * [squaresNumber];
@@ -51,8 +52,10 @@ void Plane::drawOnPlane(RenderWindow *window) {
 		}
 	}
 
-	if(Keyboard::isKeyPressed(Keyboard::Key::Space))
+	if(Keyboard::isKeyPressed(Keyboard::Key::Space)) {
 		this->isDrawing = false;
+		dfs();
+	}
 }
 
 void Plane::draw(RenderTarget &target, RenderStates state) const {
@@ -64,5 +67,60 @@ void Plane::draw(RenderTarget &target, RenderStates state) const {
 }
 
 void Plane::dfs() {
-	
+	if(this->isDrawing || !this->isDfsAvaliable)
+		return;
+
+	q.push(this->startSquare);
+	point = this->startSquare;
+	distance[point.first][point.second] = 0;
+
+	while(!q.empty()) {
+		point = q.front();
+		q.pop();
+
+		if(point.first != 0) {
+			temp = make_pair(point.first - 1, point.second);
+			dfsHelp();
+			if(!this->isDfsAvaliable)
+				break;
+		}
+
+		if(point.first != this->squaresNumber - 1) {
+			temp = make_pair(point.first + 1, point.second);
+			dfsHelp();
+			if(!this->isDfsAvaliable)
+				break;
+		}
+
+		if(point.second != 0) {
+			temp = make_pair(point.first, point.second - 1);
+			dfsHelp();
+			if(!this->isDfsAvaliable)
+				break;
+		}
+
+		if(point.second != this->squaresNumber - 1) {
+			temp = make_pair(point.first, point.second + 1);
+			dfsHelp();
+			if(!this->isDfsAvaliable)
+				break;
+		}
+	}
+
+	this->isDfsAvaliable = false;
+}
+
+void Plane::dfsHelp() {
+	if(this->distance[temp.first][temp.second] == -1
+	  && this->squares[temp.first][temp.second].getSquareColor() != Color::Yellow) {
+		this->distance[temp.first][temp.second] = this->distance[point.first][point.second];
+
+		if(temp == this->endSquare) {
+			this->isDfsAvaliable = false;
+
+		}
+
+		q.push(temp);
+		this->squares[temp.first][temp.second].setSquareColor(Color::Red);
+	}
 }

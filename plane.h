@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "squareWithFrame.h"
+#include <queue>
 
 class Plane :public sf::Drawable {
 public:
@@ -21,5 +22,10 @@ private:
 	bool isDrawing;
 
 	void dfs();
+	void dfsHelp();
 	int **distance;
+	bool isDfsAvaliable;
+	std::queue< std::pair<int, int> > q;
+	std::pair<int, int> point;
+	std::pair<int, int> temp;
 };
