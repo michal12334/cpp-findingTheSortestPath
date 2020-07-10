@@ -10,6 +10,7 @@ public:
 	void setStartSquare(std::pair<int, int> startSquare);
 	void setEndSquare(std::pair<int, int> endSquare);
 	void drawOnPlane(sf::RenderWindow *window);
+	void bfs();
 
 private:
 	void draw(sf::RenderTarget &target, sf::RenderStates state) const override;
@@ -21,8 +22,7 @@ private:
 	std::pair<int, int> endSquare;
 	bool isDrawing;
 
-	void dfs();
-	void dfsHelp();
+	void bfsHelp();
 	int **distance;
 	bool isDfsAvaliable;
 	std::queue< std::pair<int, int> > q;

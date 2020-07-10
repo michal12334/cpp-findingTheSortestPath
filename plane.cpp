@@ -54,7 +54,6 @@ void Plane::drawOnPlane(RenderWindow *window) {
 
 	if(Keyboard::isKeyPressed(Keyboard::Key::Space)) {
 		this->isDrawing = false;
-		dfs();
 	}
 }
 
@@ -66,7 +65,7 @@ void Plane::draw(RenderTarget &target, RenderStates state) const {
 	}
 }
 
-void Plane::dfs() {
+void Plane::bfs() {
 	if(this->isDrawing || !this->isDfsAvaliable)
 		return;
 
@@ -74,43 +73,42 @@ void Plane::dfs() {
 	point = this->startSquare;
 	distance[point.first][point.second] = 0;
 
-	while(!q.empty()) {
-		point = q.front();
-		q.pop();
+	point = q.front();
+	q.pop();
 
-		if(point.first != 0) {
-			temp = make_pair(point.first - 1, point.second);
-			dfsHelp();
-			if(!this->isDfsAvaliable)
-				break;
-		}
-
-		if(point.first != this->squaresNumber - 1) {
-			temp = make_pair(point.first + 1, point.second);
-			dfsHelp();
-			if(!this->isDfsAvaliable)
-				break;
-		}
-
-		if(point.second != 0) {
-			temp = make_pair(point.first, point.second - 1);
-			dfsHelp();
-			if(!this->isDfsAvaliable)
-				break;
-		}
-
-		if(point.second != this->squaresNumber - 1) {
-			temp = make_pair(point.first, point.second + 1);
-			dfsHelp();
-			if(!this->isDfsAvaliable)
-				break;
-		}
+	if(point.first != 0) {
+		temp = make_pair(point.first - 1, point.second);
+		bfsHelp();
+		if(!this->isDfsAvaliable)
+			return;
 	}
 
-	this->isDfsAvaliable = false;
+	if(point.first != this->squaresNumber - 1) {
+		temp = make_pair(point.first + 1, point.second);
+		bfsHelp();
+		if(!this->isDfsAvaliable)
+			return;
+	}
+
+	if(point.second != 0) {
+		temp = make_pair(point.first, point.second - 1);
+		bfsHelp();
+		if(!this->isDfsAvaliable)
+			return;
+	}
+
+	if(point.second != this->squaresNumber - 1) {
+		temp = make_pair(point.first, point.second + 1);
+		bfsHelp();
+		if(!this->isDfsAvaliable)
+			return;
+	}
+
+	if(q.empty())
+		this->isDfsAvaliable = false;
 }
 
-void Plane::dfsHelp() {
+void Plane::bfsHelp() {
 	if(this->distance[temp.first][temp.second] == -1
 	  && this->squares[temp.first][temp.second].getSquareColor() != Color::Yellow) {
 		this->distance[temp.first][temp.second] = this->distance[point.first][point.second];
